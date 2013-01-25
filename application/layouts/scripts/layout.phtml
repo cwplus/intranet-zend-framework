@@ -1,0 +1,191 @@
+<?php echo $this->doctype('HTML5') ?>
+<!--[if lt IE 7 ]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html class="no-js" lang="fr"> <!--<![endif]-->
+    <head>
+        <?php
+        // SOURCE CSS : http://twitter.github.com/bootstrap/scaffolding.html
+        echo $this->headTitle();
+        echo $this->headMeta();
+        echo $this->headLink();
+        echo $this->headScript();
+        echo $this->jQuery();
+        //echo $this->headStyle();
+        ?>
+
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <link rel="shortcut icon" href="/favicon.ico">
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+        <script type="text/javascript">
+            //$('.dropdown-toggle').dropdown();
+        </script>
+
+        <?php $pageCourante = new Zend_Session_Namespace('layout'); ?>
+
+    </head>
+    <?php
+    $fc = Zend_Controller_Front::getInstance()->getRequest();
+    ?>
+    <body class="<?php echo $fc->getControllerName() . '-' . $fc->getActionName(); ?>">
+        <div class="container" style="padding-top: 60px;">
+            
+            
+            
+            <?php
+            // TEMP : create password
+            //echo md5('mypassword');
+            ?>
+            
+
+            
+            
+            <?php
+            $pageCourante = new Zend_Session_Namespace('layout');
+            $auth = Zend_Auth::getInstance();
+            //Zend_Debug::dump($auth);
+            /*if ($auth->hasIdentity()){
+                $identite = $auth->getIdentity();
+                echo "identite : ";
+                Zend_Debug::dump($identite);
+                echo "<hr />";
+            }*/
+            ?>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <!--
+                        <div class="alert">
+                            <a class="close" data-dismiss="alert">×</a>
+                            <strong>Warning!</strong> Best check yo self, you're not looking too good.
+                        </div>
+            -->
+
+
+
+
+            <?php
+            /*
+             * NAVIGATION : 
+             * Methode 1 EXCELLENT (xml ou ini) : http://inchoo.net/tools-frameworks/zend/zend-framework-navigation-with-breadcrumbs/ 
+             * Methode 2 : http://www.zendcasts.com/zend_navigation-dynamically-creating-a-menu-a-sitemap-and-breadcrumbs/2009/06/
+             */
+            ?>
+            <nav>
+                <?php echo $this->render('_nav.phtml') ?>
+            </nav>
+            <!--
+            <div class='navigation'>
+            <?php
+            // CLASSIQUE
+            //echo $this->navigation()->menu();
+            // AVEC LOOK BOOTSTRAP TWITTER
+            //echo $this->navigation()->menu()->renderPartial(null, '_menu.phtml');
+            ?>
+            </div>
+            -->
+
+
+
+
+
+            <?php
+            /*
+             * BREADCRUMB : 
+             * Methode 1 EXCELLENT (xml ou ini) : http://inchoo.net/tools-frameworks/zend/zend-framework-navigation-with-breadcrumbs/ 
+             * Methode 2 : http://www.zendcasts.com/zend_navigation-dynamically-creating-a-menu-a-sitemap-and-breadcrumbs/2009/06/
+             */
+            ?>
+            <ul class="breadcrumb">
+                <li>
+                    <?php
+                    echo $this->navigation()
+                            ->breadcrumbs()
+//                            ->setMinDepth(0)
+//                            ->setLinkLast(true)
+                            ->setSeparator(" / ")
+                            ->render();
+                    ?>
+                </li>
+            </ul>
+
+
+
+
+
+
+
+            <header>
+                <?php //echo $this->render('_header.phtml')      ?>
+            </header>
+
+            <!--
+            <i class="icon-plus-sign"></i> ajouter
+            <i class="icon-edit"></i> editer
+            <i class="icon-search"></i> rechercher
+
+            <div class="row">
+                <div class="page-header">
+                    <div class="span6">
+                        <h1>Titre 1 <small>suite bla bla</small></h1>
+                    </div>
+                </div>
+
+                <div class="span6">
+                    <h1>Titre 2 <small>suite bla bla</small></h1>
+                </div>
+            </div>
+            -->
+
+
+            <div class="row">
+                <div class="span12">
+                    <div><?php //echo $this->flashMessenger();                                           ?></div>
+                    <?php echo $this->layout()->content ?>
+                </div>
+
+            </div> <!-- / #container -->
+
+            <footer>
+                <?php echo $this->render('_footer.phtml') ?>
+            </footer>
+
+        </div><!--<div class="container">-->
+
+        <?php
+        //echo $this->headScript();
+        ?>
+
+        <!--Le javascript
+        ==================================================-->
+        <!--Placed at the end of the document so the pages load faster-->
+        <!--
+        <script type = "text/javascript" src = "http://platform.twitter.com/widgets.js"></script>
+        <script src="assets/js/jquery.js"></script>
+        <script src="assets/js/google-code-prettify/prettify.js"></script>
+        <script src="assets/js/bootstrap-transition.js"></script>
+        <script src="assets/js/bootstrap-alert.js"></script>
+        <script src="assets/js/bootstrap-modal.js"></script>
+        <script src="assets/js/bootstrap-dropdown.js"></script>
+        <script src="assets/js/bootstrap-scrollspy.js"></script>
+        <script src="assets/js/bootstrap-tab.js"></script>
+        <script src="assets/js/bootstrap-tooltip.js"></script>
+        <script src="assets/js/bootstrap-popover.js"></script>
+        <script src="assets/js/bootstrap-button.js"></script>
+        <script src="assets/js/bootstrap-collapse.js"></script>
+        <script src="assets/js/bootstrap-carousel.js"></script>
+        <script src="assets/js/bootstrap-typeahead.js"></script>
+        <script src="assets/js/application.js"></script>
+        -->
+
+    </body>
+</html>

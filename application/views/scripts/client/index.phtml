@@ -1,0 +1,94 @@
+<h1><?php echo $this->titre; ?></h1>
+<fieldset>
+    <legend>Rechercher</legend>
+</fieldset>
+
+<?php
+echo $this->messValidation;
+echo $this->form;
+
+//echo $this->action("rechercher", "Client", null, array('aaa' => 'toto'));
+
+if (count($this->resultatPagination)):
+    ?>
+    <fieldset>
+        <legend>Listing</legend>
+    </fieldset>    
+    <a href="/client/ajouter">
+        <i class="icon-plus-sign"></i> Ajouter
+    </a>
+    <table class="table table-striped table-bordered table-condensed">
+        <thead>
+            <tr>
+                <th>id client</th>
+                <th>entreprise</th>
+                <th>qui</th>
+                <th>email</th>
+                <th>tel</th>
+                <th>action</th>
+                <th>fiche commande</th>
+                <th>sav</th>
+                <th>pret</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            $t_civilite = new TCivilite();
+            foreach ($this->resultatPagination as $item):
+                if (!empty($item->CIVILITE)) {
+                    $civiliteValeur = $t_civilite->getCivilite($item->CIVILITE);
+                    $civilite = $civiliteValeur->VALEUR;
+                }else{
+                    $civilite = "";
+                }
+                ?>
+                <tr>
+                    <td><?php echo $item->ID_CLIENT; ?></td>
+                    <td><?php echo $item->ENTREPRISE; ?></td>
+                    <td><?php echo $civilite . " " . $item->NOM . " " . $item->PRENOM; ?></td>
+                    <td><?php echo $item->EMAIL; ?></td>
+                    <td>
+                        <?php
+                        echo "<p>" . $item->TEL_BUREAU . "</p>";
+                        echo "<p>" . $item->TEL_DOMICILE . "</p>";
+                        echo "<p>" . $item->TEL_MOBILE . "</p>";
+                        ?>
+                    </td>
+                    <td>
+                        <a href="/client/editer/idClient/<?php echo $item->ID_CLIENT; ?>">
+                            <i class="icon-edit"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href='/fiche-commande/ajouter/idClient/<?php echo $item->ID_CLIENT; ?>'><i class="icon-plus-sign"></i></a>
+                        <a href='/fiche-commande/index/idClient/<?php echo $item->ID_CLIENT; ?>'>
+                            <i class="icon-search"></i>
+                        </a>                   
+                    </td>
+                    <td>
+                        <a href='/sav/ajouter/idClient/<?php echo $item->ID_CLIENT; ?>'><i class="icon-plus-sign"></i></a>
+                        <a href='/sav/index/idClient/<?php echo $item->ID_CLIENT; ?>'>
+                            <i class="icon-search"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href='/pret/ajouter/idClient/<?php echo $item->ID_CLIENT; ?>'>
+                            <i class="icon-plus-sign"></i>
+                        </a>
+                        <a href='/pret/index/idClient/<?php echo $item->ID_CLIENT; ?>'>
+                            <i class="icon-search"></i>
+                        </a>
+                    </td>
+                </tr>
+
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+
+    <?php
+    echo $this->paginationControl(
+            $this->resultatPagination, Zend_Registry::get('define')->pagination->typeDeDefilement, Zend_Registry::get('define')->pagination->pageDeRendu, $this->formData
+    );
+
+endif;
+?>

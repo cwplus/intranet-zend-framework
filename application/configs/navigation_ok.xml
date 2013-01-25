@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configdata>
+    <nav>
+        <label>Accueil</label>
+        <controller>index</controller>
+        <action>index</action>
+
+        <pages>
+            
+            <clients>
+                <label>Client</label>
+                <controller>client</controller>
+                <action>index</action>
+                <pages>
+                    <rechercher>
+                        <label>Rechercher</label>
+                        <controller>client</controller>
+                        <action>rechercher</action>
+                    </rechercher>
+                    <lister>
+                        <label>Lister</label>
+                        <controller>client</controller>
+                        <action>lister</action>
+                    </lister>
+                </pages>
+            </clients>
+         
+            <fichecommande>
+                <label>Fiche de commande</label>
+                <controller>fiche-commande</controller>
+                <action>index</action>
+                <pages>
+                    <rechercher>
+                        <label>Rechercher</label>
+                        <controller>fiche-commande</controller>
+                        <action>rechercher</action>
+                    </rechercher>
+                    <lister>
+                        <label>Lister</label>
+                        <controller>fiche-commande</controller>
+                        <action>lister</action>
+                    </lister>                    
+                </pages>
+            </fichecommande>
+            
+            <sav>
+                <label>S.A.V.</label>
+                <controller>sav</controller>
+                <action>index</action>
+                <pages>
+                    <rechercher>
+                        <label>Rechercher</label>
+                        <controller>sav</controller>
+                        <action>rechercher</action>
+                    </rechercher>
+                    <lister>
+                        <label>Lister</label>
+                        <controller>sav</controller>
+                        <action>lister</action>
+                    </lister>                    
+                </pages>
+            </sav>
+            
+            <sitemap>
+                <label>Sitemap</label>
+                <controller>sitemap</controller>
+                <action>index</action>
+                <order>3</order>
+                <active>1</active>
+                <visible>1</visible>
+                <params>
+                    <id>100</id>
+                    <prenom>jerome</prenom>
+                </params>
+            </sitemap>
+            
+        </pages>
+        
+    </nav>
+</configdata>

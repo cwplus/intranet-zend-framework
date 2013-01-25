@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configdata>
+    <nav>
+        <label>Home</label>
+        <controller>index</controller>
+        <action>index</action>
+        <pages>
+            <xml>
+                <label>Xml</label>
+                <controller>xml</controller>
+                <action>index</action>
+                <pages>
+                    <sample>
+                        <label>Sample</label>
+                        <controller>xml</controller>
+                        <action>sample</action>
+                    </sample>
+                    <test>
+                        <label>Test</label>
+                        <controller>xml</controller>
+                        <action>test</action>
+                        <params>
+                            <id>100</id>
+                        </params>
+                    </test>
+                </pages>
+            </xml>
+            <sitemap>
+                <label>Sitemap</label>
+                <controller>sitemap</controller>
+                <action>index</action>
+                <pages>
+                    <categories>
+                        <label>Categories sitemap</label>
+                        <controller>sitemap</controller>
+                        <action>categories</action>
+                    </categories>
+                    <products>
+                        <label>Products sitemap</label>
+                        <controller>sitemap</controller>
+                        <action>products</action>
+                    </products>
+                </pages>
+            </sitemap>
+        </pages>
+    </nav>
+</configdata>

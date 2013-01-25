@@ -1,0 +1,70 @@
+<h1><?php echo $this->titre; ?></h1>
+<fieldset>
+    <legend>Rechercher</legend>
+</fieldset>
+
+<?php
+echo $this->messValidation;
+echo $this->form;
+
+if (count($this->resultatPagination)):
+    ?>
+    <fieldset>
+        <legend>Listing</legend>
+    </fieldset>    
+    <a href="/sav/ajouter">
+        <i class="icon-plus-sign"></i> Ajouter
+    </a>
+    <table class="table table-striped table-bordered table-condensed">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>client</th>
+                <th>etat</th>
+                <th>creation</th>
+                <th>livraison</th>
+                <th>commercial</th>
+                <th>technicien</th>
+                <th>panne</th>
+                <th>reparation</th>
+                <th>n° devis (sage)</th>
+                <th>modifier</th>
+                <th>supprimer</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            foreach ($this->resultatPagination as $item): ?>
+                <tr>
+                    <td><?php echo $item->ID_SAV; ?></td>
+                    <td><?php echo $item->C_NOM . " " . $item->C_PRENOM . " " . $item->C_ENTREPRISE; ?></td>
+                    <td><?php echo $item->E_VALEUR; ?></td>
+                    <td><?php echo $item->DATE_CREATION; ?></td>
+                    <td><?php echo $item->DATE_LIVRAISON; ?></td>
+                    <td><?php echo $item->CC_NOM." ".$item->CC_PRENOM; ?></td>
+                    <td><?php echo $item->CT_NOM." ".$item->CT_PRENOM; ?></td>
+                    <td><?php echo $item->COMMENTAIRE_PANNE; ?></td>
+                    <td><?php echo $item->COMMENTAIRE_REPARATION; ?></td>
+                    <td><?php echo $item->NUMERO_DEVIS; ?></td>
+                    <td>
+                        <a href="/sav/editer/idSav/<?php echo $item->ID_SAV; ?>">
+                            <i class="icon-edit"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="/sav/supprimer/idSav/<?php echo $item->ID_SAV; ?>">
+                            <i class="icon-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+
+    <?php
+    echo $this->paginationControl(
+            $this->resultatPagination, Zend_Registry::get('define')->pagination->typeDeDefilement, Zend_Registry::get('define')->pagination->pageDeRendu, $this->formData
+    );
+
+endif;
+?>

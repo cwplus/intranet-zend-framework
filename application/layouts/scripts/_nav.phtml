@@ -1,0 +1,62 @@
+<?php
+$auth = Zend_Auth::getInstance()->hasIdentity() ?
+        Zend_Auth::getInstance()->getIdentity() :
+        NULL;
+?>
+
+
+<div id="navbar-example" class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container" style="width: auto;">
+            <a class="brand" href="#">INTRANET</a>
+            <ul class="nav">
+
+                <?php if ($auth): ?>
+                    <li><a href="/client/index">Client</a></li>
+                    <li><a href="/fiche-commande/index">Fiche de commande</a></li>
+                    <li><a href="/sav/index">S.A.V.</a></li>
+                    <li><a href="/fournisseur/index">Fournisseur</a></li>
+                    <li><a href="/pret/index">Pret</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Aide <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/">FAQ</a></li>
+                            <li><a href="/">Coordonnées employés</a></li>
+                            <li class="divider"></li>
+                            <li class="nav-header">Autres informations</li>
+                            <li><a href="#">Aide</a></li>
+                        </ul>
+                    </li>
+                    <li><a id="nav-auth" href="/auth/logout" title="" class=""><span>Deconnexion</span></a></li>
+
+                <?php else: ?>
+                    <li class="active"><a href="/index/index">Accueil</a></li>
+                    <!--<li><a id="nav-auth" href="/auth/login" title="" class=""><span>Log in</span></a></li>-->
+                <?php endif; ?>
+
+            </ul>
+
+            <form class="navbar-search pull-left">
+                <input type="text" class="search-query" placeholder="Search">
+            </form>
+
+            <ul class="nav pull-right">
+                <li><a href="/sitemap/index">Sitemap</a></li>
+            </ul>
+        </div>
+    </div>
+</div> <!-- /navbar-example -->
+
+<!--
+<ul class="breadcrumb">
+    <li>
+        <a href="#">Home</a> <span class="divider">/</span>
+    </li>
+    <li>
+        <a href="#">Library</a> <span class="divider">/</span>
+    </li>
+    <li class="active">
+        <a href="#">Data</a>
+    </li>
+</ul>
+-->

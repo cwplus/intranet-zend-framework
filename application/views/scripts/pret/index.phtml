@@ -1,0 +1,74 @@
+<h1><?php echo ucfirst($this->titre); ?></h1>
+<fieldset>
+    <legend>Listing</legend>
+</fieldset>
+
+<?php
+if (count($this->prets)):
+    ?>
+    <a href="/pret/ajouter">
+        <i class="icon-plus-sign"></i> Ajouter
+    </a>
+    <table class="table table-striped table-bordered table-condensed">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>client</th>
+                <th>quoi</th>
+                <th>qui (preteur)</th>
+                <th>debut</th>
+                <th>fin</th>
+                <th>modifier</th>
+                <th>supprimer</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            $t_client = new TClient();
+            $t_login = new TLogin();
+            foreach ($this->prets as $item):
+                $client = "";
+                $client = $t_client->getClient($item->ID_CLIENT);
+                if( empty($client['ENTREPRISE']) ){
+                    $entreprise = "";
+                }else{
+                    $entreprise = "(".$client['ENTREPRISE'].")";
+                }
+                
+                $login = "";
+                $login = $t_login->getLogin($item->ID_PRETEUR);
+                ?>
+                <tr>
+                    <td><?php echo $item->ID_PRET; ?></td>
+                    <td><?php echo $client['NOM']." ".$client['PRENOM']; ?></td>
+                    <td><?php echo $item->TYPE_MATERIEL; ?></td>
+                    <td><?php echo $login['NOM']." ".$login['PRENOM']; ?></td>
+                    <td><?php echo $item->DATE_DEBUT_PRET; ?></td>
+                    <td><?php echo $item->DATE_FIN_PRET; ?></td>
+                    <td>
+                        <a href="/pret/editer/idPret/<?php echo $item->ID_PRET; ?>">
+                            <i class="icon-edit"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="/pret/supprimer/idPret/<?php echo $item->ID_PRET; ?>">
+                            <i class="icon-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+
+    <?php
+/*
+  echo $this->paginationControl(
+  $this->resultatPagination,
+  Zend_Registry::get('define')->pagination->typeDeDefilement,
+  Zend_Registry::get('define')->pagination->pageDeRendu,
+  $this->formData
+  );
+ */
+endif;
+?>

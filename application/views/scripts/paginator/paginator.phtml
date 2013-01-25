@@ -1,0 +1,64 @@
+<?php
+/*
+ * SOURCE : http://framework.zend.com/manual/1.11/fr/zend.paginator.usage.html
+ * Voir http://developer.yahoo.com/ypatterns/pattern.php?pattern=searchpagination
+ * 
+ * array_merge, array_push : http://hexmen.com/blog/2008/11/concatenating-arrays-in-php/
+ */
+
+
+
+
+$suiteUrl = array();
+if( count($this->resultFormRecherche)){
+    foreach( $this->resultFormRecherche as $k=>$v ){
+        if( !empty($v) && $k != 'btn_envoyer' ){
+            $suiteUrl[$k] = $v;
+        }
+    }
+}
+
+
+
+
+if ($this->pageCount): ?>
+    <div class="pagination">
+        <ul>
+            <!-- Previous page link -->
+            <?php if (isset($this->previous)):
+                $tbl_page = array('page' => $this->previous);
+                $tbl = array_merge($tbl_page , $suiteUrl);
+                ?>
+                <li><a href="<?php echo $this->url($tbl); ?>">
+                    &lt; Precedent
+                </a></li>
+            <?php //else: ?>
+                <!--<li><span class="disabled">&lt; Previous</span></li>-->
+            <?php endif; ?>
+
+            <!-- Numbered page links -->
+            <?php foreach ($this->pagesInRange as $page): ?>
+                <?php if ($page != $this->current): 
+                    $tbl_page = array('page' => $page);
+                    $tbl = array_merge($tbl_page , $suiteUrl);
+                    ?>
+                    <li><a href="<?php echo $this->url($tbl); ?>"><?php echo $page; ?></a></li>
+                <?php else: ?>
+                    <li class="active"><a href="#"><?php echo $page; ?></a></li>
+                <?php endif; ?>
+            <?php endforeach; ?>
+
+            <!-- Next page link -->
+            <?php if (isset($this->next)): 
+                $tbl_page = array('page' => $this->next);
+                $tbl = array_merge($tbl_page , $suiteUrl);
+                ?>
+                <li><a href="<?php echo $this->url($tbl); ?>">
+                    Suivant &gt;
+                </a></li>
+            <?php //else: ?>
+                <!--<li><span class="disabled">Next &gt;</span></li>-->
+            <?php endif; ?>
+        </ul>
+    </div>
+<?php endif; ?>

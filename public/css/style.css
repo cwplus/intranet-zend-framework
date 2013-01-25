@@ -1,0 +1,36 @@
+/* 
+    Document   : style.css
+    Created on : 23 mars 2012, 12:45:33
+    Author     : michael
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+ul.errors { 
+    color: red;
+    list-style: none;
+    margin: 0;
+}
+p.description{
+    color: grey;
+    font-size: 0.75em;
+}
+fieldset{
+    clear: both;
+}
+
+/* FORMULAIRE */
+form dl.zend_form dt#btn_retour-label,
+form dl.zend_form dt#btn_reset-label{ 
+    height: 0;
+}
+form dl.zend_form dd#btn_envoyer-element,
+form dl.zend_form dd#btn_retour-element,
+form dl.zend_form dd#btn_reset-element{
+    float: left;
+}
+
+form dl.zend_form label.required:after{
+    content: " * ";
+    color: red;
+}

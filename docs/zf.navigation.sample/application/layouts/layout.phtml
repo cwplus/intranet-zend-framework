@@ -1,0 +1,28 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <?php echo $this->headTitle() ?>
+        <?php echo $this->headScript() ?>
+        <?php echo $this->headStyle() ?>
+    </head>
+    <body>
+        <?php echo $this->render('header.phtml') ?>
+        
+        <div id="menu">
+            <?php echo $this->navigation()->menu(); ?>
+        </div>
+        
+        <div id="breadcrumbs">
+            You are in: <strong><?php echo $this->navigation()->breadcrumbs()->setLinkLast(false)->setMinDepth(0)->render(); ?></strong>
+        </div>
+        
+        <div id="content">
+        	<?php echo $this->layout()->content?>
+        </div>
+
+        <?php echo $this->render('footer.phtml') ?>
+    </body>
+</html>

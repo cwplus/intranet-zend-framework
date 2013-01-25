@@ -1,0 +1,53 @@
+/* 
+    Document   : form
+    Created on : 20 mai 2012, 15:42:26
+    Author     : michael
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+#clientRechercher dt,
+#clientAjouter dt,
+#clientEditer dt,
+#ficheCommandeRechercher dt,
+#ficheCommandeAjouter dt,
+#ficheCommandeEditer dt,
+#savRechercher dt,
+#savAjouter dt,
+#savEditer dt,
+#pretAjouter dt,
+#pretEditer dt
+{
+    width: 150px;
+    float: left;
+}
+#clientRechercher dd,
+#clientAjouter dd,
+#clientEditer dd,
+#ficheCommandeRechercher dd,
+#ficheCommandeAjouter dd,
+#ficheCommandeEditer dd,
+#savRechercher dd,
+#savAjouter dd,
+#savEditer dd,
+#pretAjouter dd,
+#pretEditer dd{
+{
+    width: 250px;
+    float: left;
+}
+/*
+#clientRechercher #ENTREPRISE-label,
+#clientRechercher #ENTREPRISE-element,
+#clientRechercher #ADRESSE_01-label,
+#clientRechercher #ADRESSE_01-element,
+#clientRechercher #ADRESSE_02-label,
+#clientRechercher #ADRESSE_02-element,
+#clientRechercher #VILLE-label,
+#clientRechercher #VILLE-element,
+#clientRechercher #CODE_POSTAL-label,
+#clientRechercher #CODE_POSTAL-element
+{ 
+    float: right;
+}
+*/

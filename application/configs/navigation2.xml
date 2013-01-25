@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configdata>
+    <nav>
+        <accueil>
+            <label>Accueil</label>
+            <controller>index</controller>
+            <action>index</action>
+        </accueil>
+        <clients>
+            <label>Client</label>
+            <controller>client</controller>
+            <action>index</action>
+            <rechercher>
+                <label>Rechercher</label>
+                <controller>client</controller>
+                <action>index</action>
+            </rechercher>
+        </clients>
+        <sitemap>
+            <label>Sitemap</label>
+            <controller>sitemap</controller>
+            <action>index</action>
+        </sitemap>
+    </nav>
+</configdata>

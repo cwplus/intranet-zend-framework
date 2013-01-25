@@ -1,0 +1,86 @@
+<h1><?php echo $this->titre; ?></h1>
+<fieldset>
+    <legend>Rechercher</legend>
+</fieldset>
+
+<?php
+echo $this->messValidation;
+echo $this->form;
+
+if (count($this->resultatPagination)):
+    ?>
+    <fieldset>
+        <legend>Listing</legend>
+    </fieldset>  
+    <a href="/fiche-commande/ajouter">
+        <i class="icon-plus-sign"></i> Ajouter
+    </a>
+    <table class="table table-striped table-bordered table-condensed">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>client</th>
+                <th>fournisseur</th>
+                <th>etat</th>
+                <th>creation</th>
+                <th>livraison</th>
+                <th>en cours</th>
+                <th>reçu</th>
+                <th>pret</th>
+                <th>facture</th>
+                <th>commentaire</th>
+                <th>designation</th>
+                <th>modifier</th>
+                <th>supprimer</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            foreach ($this->resultatPagination as $item):
+                $tbl_designationTemp = explode(";", $item->DESIGNATION);
+                $designation = "";
+                foreach ($tbl_designationTemp as $k) {
+                    if (!empty($k)) {
+                        if( !empty($designation) ){
+                            $designation .= "<br />";
+                        }
+                        $designation .= $k;
+                        
+                    }
+                }
+                ?>
+                <tr>
+                    <td><?php echo $item->ID_FICHECOMMANDE; ?></td>
+                    <td><?php echo $item->C_NOM . " " . $item->C_PRENOM . " " . $item->C_ENTREPRISE; ?></td>
+                    <td><?php echo $item->F_VALEUR; ?></td>
+                    <td><?php echo $item->E_VALEUR; ?></td>
+                    <td><?php echo $item->DATE_CREATION; ?></td>
+                    <td><?php echo $item->DATE_LIVRAISON; ?></td>
+                    <td><?php echo $item->DATE_EN_COURS; ?></td>
+                    <td><?php echo $item->DATE_RECU; ?></td>
+                    <td><?php echo $item->DATE_LIVRE; ?></td>
+                    <td><?php echo $item->DATE_FACTURE; ?></td>
+                    <td><?php echo $item->COMMENTAIRE; ?></td>
+                    <td><?php echo $designation; ?></td>
+                    <td>
+                        <a href="/fiche-commande/editer/idFicheCommande/<?php echo $item->ID_FICHECOMMANDE; ?>">
+                            <i class="icon-edit"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="/fiche-commande/supprimer/idFicheCommande/<?php echo $item->ID_FICHECOMMANDE; ?>">
+                            <i class="icon-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+
+    <?php
+    echo $this->paginationControl(
+            $this->resultatPagination, Zend_Registry::get('define')->pagination->typeDeDefilement, Zend_Registry::get('define')->pagination->pageDeRendu, $this->formData
+    );
+
+endif;
+?>

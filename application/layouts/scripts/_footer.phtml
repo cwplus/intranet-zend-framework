@@ -1,0 +1,13 @@
+<div id="footer" class="row">
+    
+
+    <div class="span4">
+        <p>&copy;<? echo date('Y')." <a href='http://www.eewee.fr'>".Zend_Registry::get('define')->coordonnee->nomSociete; ?></a></p>
+    </div>
+    <div class="span4">
+        <?php echo Zend_Registry::get('define')->coordonnee->adresse.", ".Zend_Registry::get('define')->coordonnee->cp." ".Zend_Registry::get('define')->coordonnee->ville; ?>
+    </div>
+    <div class="span4">
+        <i class="icon-envelope"></i> <a href="mailto:<?php echo Zend_Registry::get('define')->coordonnee->email; ?>"><?php echo Zend_Registry::get('define')->coordonnee->email; ?></a>
+    </div>
+</div>

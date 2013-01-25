@@ -1,0 +1,17 @@
+<h1 class='titre-g'><?php echo $this->_("Mot de passe oublié ?");?></h1>
+<?php echo $this->_("zone : mot de passe oublie");?>
+<?php echo $this->flash();?>
+
+<?php
+echo $this->placeholder('pageTitle')-> set('Mot de passe oublié');
+?><div class='blockFondPage2'>
+	<p class='mdpOublie'>
+		<?php echo $this->_("Vous ne vous souvenez plus de votre mot de passe... ou si vous n’avez pas reçu l’email d’activation ?");?>
+	</p>
+	<?php echo $this->form; ?>
+	<div class='clear'></div>
+	<br />
+	<p>
+		<?php echo $this->_("NB : le nouveau mot de passe vous sera envoyé sur votre boite email."); ?>
+	</p>
+</div>
