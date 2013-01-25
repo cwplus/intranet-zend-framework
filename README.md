@@ -3,10 +3,10 @@ intranet-zend-framework
 
 Structure type for create an intranet with Zend Framework project
 
-# Licence
+## Licence
 - http://creativecommons.org/licenses/by-nc-sa/3.0/fr/
 
-# Author
+## Author
 - [eewee.fr](http://www.eewee.fr) - Copyright (c) 2013 EEWEE.fr
 
 ## Description
